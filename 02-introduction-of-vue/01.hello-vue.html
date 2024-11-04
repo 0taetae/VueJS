@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--선언적 렌더링-->
+        <!-- {{}} : 템플릿 기호, Mustache-->
+        <!-- 템플릿에서 ref를 사용할때는 .value (언래핑)할 필요 없음 -->
+        <h1>{{message}}</h1> 
+        <button v-on:click="increment">1씩 증가 - {{countNumber}}</button>
+    </div>
+    <!--CDN 사용-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--vue 객체 만들기 = application 만들기-->
+    <script>
+        const {createApp, ref} = Vue;  // createApp이라는 메소드 
+
+        // 인자값으로 객체를 가져감 
+        const app = createApp({
+            
+            // setup 메소드 생성
+            setup() {
+                const message = ref("hello vue !!!")  // ref : 반응형
+                console.log(message)
+                console.log(message.value)
+                //let age = 10;
+                const countNumber = ref(1);
+                const increment = function(){
+                    // countNumber++; = countNumber ref 객체 ++
+                    countNumber.value++;
+                }
+
+                // 외부에서 함수, 변수 등을 사용할때는 return 필수!!!!
+                return {
+                    message,
+                    countNumber,
+                    increment
+                }
+            }
+        });  
+
+        // application을 id="app"인 것에 연결
+        app.mount("#app")
+
+    </script>
+</body>
+</html>
