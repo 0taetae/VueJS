@@ -1,0 +1,47 @@
+<!-- v-for-with-key -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(ssafy) in ssafys" :key="ssafy.id">
+          {{ ssafy.area }} : <input type="text" />명
+        </li>
+      </ul>
+      <button @click="addArea">광주 추가</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp, ref, computed } = Vue;
+
+      const app = createApp({
+        setup() {
+          const ssafys = ref([
+            { id: "s", area: "서울" },
+            { id: "d", area: "대전" },
+            { id: "k", area: "구미" },
+            { id: "b", area: "부울경" },
+          ]);
+
+          const addArea = () => {
+            ssafys.value.splice(2, 0, { id: "g", area: "광주" });
+          };
+
+          return {
+            ssafys,
+            addArea,
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

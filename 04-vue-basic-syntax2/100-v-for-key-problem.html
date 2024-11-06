@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- v-for-with-key
+  key를 사용하지 않을 경우 단순 화면 렌더링에는 문제가 없으나 배열의 순서가 바뀌거나 추가, 삭제할 경우 값외의 DOM element 렌더링에 문제가 됨
+  -->
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(ssafy) in ssafys">{{ ssafy.area }} : <input type="text" />명</li>
+      </ul>
+      <button @click="addArea">광주 추가</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp, ref, computed } = Vue;
+
+      const app = createApp({
+        setup() {
+          const ssafys = ref([
+            { id: "s", area: "서울" },
+            { id: "d", area: "대전" },
+            { id: "k", area: "구미" },
+            { id: "b", area: "부울경" },
+          ]);
+
+          const addArea = () => {
+            ssafys.value.splice(2, 0, { id: "g", area: "광주" });
+          };
+
+          return {
+            ssafys,
+            addArea,
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
