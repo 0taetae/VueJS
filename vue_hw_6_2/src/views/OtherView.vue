@@ -4,9 +4,9 @@
 
 <template>
     <div>
-      <h1>router 연습하기</h1>
+        <h1>이동한 페이지</h1>
     </div>
-  </template>
+</template>
 
 <style scoped>
 

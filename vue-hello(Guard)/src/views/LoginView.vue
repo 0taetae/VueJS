@@ -4,10 +4,8 @@
 
 <template>
     <div>
-        <h1>첫 페이지</h1>
+        <h1>Login View</h1>
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
