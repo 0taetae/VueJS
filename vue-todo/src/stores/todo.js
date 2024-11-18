@@ -4,9 +4,9 @@ import { defineStore } from 'pinia'
 export const useTodoStore = defineStore('todo', () => {
   let id = 0;
   const todos = ref([
-    { id: id++, text: "Learn HTML", isCompleted: false },
-    { id: id++, text: "Learn JS", isCompleted: false },
-    { id: id++, text: "Learn Vue", isCompleted: false },
+    //{ id: id++, text: "Learn HTML", isCompleted: false },
+    //{ id: id++, text: "Learn JS", isCompleted: false },
+    //{ id: id++, text: "Learn Vue", isCompleted: false },
   ]);
 
   const totalTodoCount = computed (()=> {
